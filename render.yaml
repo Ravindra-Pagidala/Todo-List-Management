@@ -1,16 +1,15 @@
 services:
   - type: web
-    name: restful-web-services
+    name: Todo-List-Management
     env: docker
-    plan: free  # or select a different plan based on your needs
+    plan: free
     docker:
-      image: ravindrapagidala/restful-web-services:latest
-      buildCommand: ""  # No build command is needed if you're using a pre-built image
-      startCommand: "java -jar /app/app.jar"  # Update to match the copied file name
-      dockerfilePath: "restful-web-services/Dockerfile"  # Ensure this path is correct
+      image: ravindrapagidala/todo-list-management:v1.0 
+      buildCommand: ""
+      startCommand: "java -jar /app/restful-web-services-0.0.1-SNAPSHOT.jar"
     healthCheck:
-      path: "/actuator/health"  # Optional: Change if your application doesn't have Actuator
-      interval: 30000  # 30 seconds
-      timeout: 5000  # 5 seconds
+      path: "/actuator/health"
+      interval: 30000
+      timeout: 5000
       healthyThreshold: 2
       unhealthyThreshold: 5
