@@ -6,8 +6,8 @@ services:
     docker:
       image: ravindrapagidala/restful-web-services:latest
       buildCommand: ""  # No build command is needed if you're using a pre-built image
-      startCommand:startCommand: "java -jar /app/restful-web-services-0.0.1-SNAPSHOT.jar"
-  # Update if your jar file name is different
+      startCommand: "java -jar /app/app.jar"  # Update to match the copied file name
+      dockerfilePath: "restful-web-services/Dockerfile"  # Ensure this path is correct
     healthCheck:
       path: "/actuator/health"  # Optional: Change if your application doesn't have Actuator
       interval: 30000  # 30 seconds
