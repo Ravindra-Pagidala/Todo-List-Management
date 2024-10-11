@@ -1,8 +1,15 @@
 services:
   - type: web
-    name: todo-backend
-    env: java
-    plan: free
-    rootDirectory: restful-web-services
-    buildCommand: "./mvnw clean package"  # for Maven, adjust if using Gradle
-    startCommand: "java -jar target/*.jar"
+    name: restful-web-services
+    env: docker
+    plan: free  # or select a different plan based on your needs
+    docker:
+      image: ravindrapagidala/restful-web-services:latest
+      buildCommand: ""  # No build command is needed if you're using a pre-built image
+      startCommand: "java -jar /app/app.jar"  # Update if your jar file name is different
+    healthCheck:
+      path: "/actuator/health"  # Optional: Change if your application doesn't have Actuator
+      interval: 30000  # 30 seconds
+      timeout: 5000  # 5 seconds
+      healthyThreshold: 2
+      unhealthyThreshold: 5
