@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: todo-backend
+    env: java
+    plan: free
+    rootDirectory: restful-web-services
+    buildCommand: "./mvnw clean package"  # for Maven, adjust if using Gradle
+    startCommand: "java -jar target/*.jar"
